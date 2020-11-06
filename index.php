@@ -154,21 +154,21 @@
             </ul>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./images/image.png" alt="Image 1" width="1100" height="500">
+                    <img src="./images/sl1.jpg" alt="Image 1" width="1100" height="500">
                     <div class="carousel-caption">
                         <h3>Slide 1</h3>
                         <p>Image 1</p>
                     </div>   
                 </div>
                 <div class="carousel-item">
-                    <img src="./images/image.png" alt="Image 2" width="1100" height="500">
+                    <img src="./images/sl2.jpg" alt="Image 2" width="1100" height="500">
                     <div class="carousel-caption">
                         <h3>Slide 2</h3>
                         <p>Image 2</p>
                     </div>   
                 </div>
                 <div class="carousel-item">
-                    <img src="./images/image.png" alt="Image 3" width="1100" height="500">
+                    <img src="./images/sl3.jpg" alt="Image 3" width="1100" height="500">
                         <div class="carousel-caption">
                             <h3>Slide 3</h3>
                             <p>Image 3</p>
@@ -190,13 +190,13 @@
                 <div class="col-12 my-5" >
                     <div class="card-deck px-5">
                         <div class="card">
-                            <img src="./images/image.png" class="card-img-top" alt="Image">
+                            <img src="./images/paneer.jpg" class="card-img-top" alt="Image">
                         </div>
                         <div class="card">
-                            <img src="./images/image.png" class="card-img-top" alt="Image">
+                            <img src="./images/sm2r.jpg" class="card-img-top" alt="Image">
                         </div>
                         <div class="card">
-                            <img src="./images/image.png" class="card-img-top" alt="Image">
+                            <img src="./images/sm3.jpg" class="card-img-top" alt="Image">
                         </div>
                     </div>
                 </div>
