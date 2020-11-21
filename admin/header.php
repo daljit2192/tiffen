@@ -1,3 +1,4 @@
+<?php// echo phpinfo(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,6 +17,9 @@
         <link href="./css/startmin.css" rel="stylesheet">
 
         <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            
+        </style>
 
     </head>
     <body>

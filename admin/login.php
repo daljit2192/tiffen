@@ -1,4 +1,10 @@
-<?php include 'submit.php'; ?>
+<?php 
+session_start();
+if(isset($_SESSION['user'])){
+    // echo "m here"; die;
+    header("Location: dashboard.php");
+}
+include 'submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
