@@ -28,6 +28,9 @@
                             <li>
                                 <a href="users.php"><i class="fa fa-table fa-fw"></i> Users</a>
                             </li>
+                            <li>
+                                <a href="meals.php"><i class="fa fa-table fa-fw"></i> Meals</a>
+                            </li>
                             
                             
                         </ul>

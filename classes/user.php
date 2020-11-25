@@ -1,5 +1,5 @@
 <?php 
-include './connect.php';
+include_once './connect.php';
 class User extends Connect{
 
 	public $user = array('data' =>array() , 'error'=> '', 'success'=> '' );

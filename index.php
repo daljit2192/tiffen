@@ -43,24 +43,14 @@
                 </div>
                 <div class="col-12 my-5" >
                     <div class="card-deck px-5">
+                    <?php foreach($meals["data"] as $meal) {?>
                         <div class="card">
                            	<a href="meal_plans.php">
-                            	<img src="./images/paneer.jpg" class="card-img-top" alt="Image">
-                                <div class="overlay">Gujrati food</div>
+                            	<img src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top" alt="Image">
+                                <div class="overlay"><?php echo $meal["meal_name"]; ?></div>
                             </a>
                         </div>
-                        <div class="card">
-                        	<a href="meal_plans.php">
-                            	<img src="./images/sm2r.jpg" class="card-img-top" alt="Image">
-                                <div class="overlay">Punjabi Food</div>
-                            </a>
-                        </div>
-                        <div class="card">
-                        	<a href="meal_plans.php">
-                            	<img src="./images/sm3.jpg" class="card-img-top" alt="Image">
-                                <div class="overlay">Soth Indian</div>
-                        	</a>
-                        </div>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
