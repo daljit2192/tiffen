@@ -11,6 +11,7 @@
                                 <div class="panel-heading">
                                     <?php echo $meal["data"]["meal_name"] ?> Meal Plans
                                     <a href="addmealplan.php?mealid=<?php echo $meal["data"]["id"]; ?>"><button type="button" class="btn btn-primary btn-xs pull-right">Add Meal Plan</button></a>
+                                    <a href="meals.php"><button type="button" class="btn btn-primary btn-xs pull-right">< Back to Meals</button></a>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive table-bordered">
