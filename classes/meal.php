@@ -49,10 +49,10 @@ class Meal extends Connect{
 		$sql = "SELECT * FROM meals WHERE id = ".$id;
 		$result = $this->conn->query($sql); 
 		$row = $result->fetch_assoc();
+		$this->meal["data"]["id"] = $row["id"];
 		$this->meal["data"]["meal_name"] = $row["meal_name"];
 		$this->meal["data"]["description"] = $row["description"];
 		$this->meal["data"]["image"] = $row["image"];
-		//array_push($this->meal['data'],$row[0]);
 		return $this->meal;
 
 	}

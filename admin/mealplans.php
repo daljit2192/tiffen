@@ -6,11 +6,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Meals</h1>
+                            <h1 class="page-header"><?php echo $meal["data"]["meal_name"]?> Meal Plans</h1>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    List of Meals
-                                    <a href="addmeal.php"><button type="button" class="btn btn-primary btn-xs pull-right">Add Meal</button></a>
+                                    <?php echo $meal["data"]["meal_name"] ?> Meal Plans
+                                    <a href="addmealplan.php?mealid=<?php echo $meal["data"]["id"]; ?>"><button type="button" class="btn btn-primary btn-xs pull-right">Add Meal Plan</button></a>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive table-bordered">
@@ -18,36 +18,31 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Meal Name</th>
+                                                    <th>Plan Name</th>
                                                     <th>Description</th>
                                                     <th>Image</th>
                                                     <th>Actions</th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($meals["data"] as $meal) {?>
+                                                <?php foreach($mealplans["data"] as $meal) {?>
                                                 <tr>
                                                     
                                                     <td><?php echo $meal["id"]; ?></td>
-                                                    <td><?php echo $meal["meal_name"]; ?></td>
+                                                    <td><?php echo $meal["name"]; ?></td>
                                                     <td><?php echo $meal["description"]; ?></td>
-                                                    <td><img src="<?php echo 'uploads/'.$meal['image']; ?>" alt="Image" height="80px" width="80px" /></td>
+                                                    <td><img src="<?php echo 'uploads/mealplan/'.$meal['image']; ?>" alt="Image" height="80px" width="80px" /></td>
                                                     <td>
-                                                        <?php echo"<a href='viewmeal.php?id=". $meal['id'] ."'>
+                                                        <?php echo"<a href='viewmealplan.php?mealid=". $meal['meal_id'] ."&id=".$meal["id"]."'>
                                                         <i class='fa fa-eye' aria-hidden='true' title='View'></i></a>"?>
-                                                        <?php echo"<a href='editmeal.php?id=". $meal['id'] ."'>
+                                                        <?php echo"<a href='editmealplan.php?mealid=". $meal['meal_id'] ."&id=".$meal["id"]."'>
                                                         <i class='fa fa-edit' aria-hidden='true' title='Edit'></i></a>"?>
-                                                        <a href="#del<?php echo $meal["id"];?>" class="delete" data-toggle="modal">
+                                                        <a href="#delplan<?php echo $meal["id"];?>" class="delete" data-toggle="modal">
                                                             <i class='fa fa-archive' aria-hidden='true' title='Delete'></i>
                                                         </a>
-                                                        <?php include('deletemeal.php'); ?>
+                                                        <?php include('deletemealplan.php'); ?>
                                                     </td>
-                                                    <td>
-                                                        <?php echo"<a href='mealplans.php?mealid=". $meal['id'] ."'>
-                                                        <button type='button' class='btn btn-primary btn-xs pull-right'>Meal Plans
-                                                        <i class='fa fa-arrow-right' aria-hidden='true' title='Meal Plans'></i></button></a>"?>
-                                                    </td>
+                                                    
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
