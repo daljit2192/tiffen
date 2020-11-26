@@ -64,7 +64,7 @@
 		$meal=$mealObj->getMealById($mealid);
 		$mealplans=$mealplanObj->getMealPlanbyMealId($mealid);
 	}
-	if (isset($_POST['addmealplan']) && isset($_GET["mealid"]) && isset($_GET["id"])){
+	if (isset($_POST['addmealplan']) && isset($_GET["mealid"])){
 		$filename=$_FILES['image']['name'];
 		$mealid =  trim($_GET["mealid"]);
 		$TargetPath=time().$filename;
