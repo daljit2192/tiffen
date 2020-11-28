@@ -41,6 +41,10 @@
                                     <textarea class="form-control" name="description" placeholder="Enter Description" rows="3"><?php echo $mealplan["data"]["description"] ?></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label>Cost in $</label>
+                                    <input class="form-control" type="number" name="cost" min="0" value="<?php echo $mealplan["data"]["cost"] ?>" step=".01">
+                                </div>
+                                <div class="form-group">
                                     <label>File input</label>
                                     <p>
                                     <?php if(!empty($mealplan['data']['image'])){ ?>

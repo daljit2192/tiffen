@@ -13,7 +13,8 @@
                            	<a href="food_items.php">
                             	<img src="<?php echo "./admin/uploads/mealplan/".$mealplan["image"]; ?>" class="card-img-top" alt="Image">
                             </a>
-                            <h6 style="align-content: center;"><?php echo $mealplan["name"]; ?></h6>
+                            <h6 style="text-align: center;"><?php echo $mealplan["name"]; ?></h6>
+                            <p style="text-align: center;">$<?php echo $mealplan["cost"]; ?></p>
                         </div>
                     <?php } ?>
                     </div>

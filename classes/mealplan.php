@@ -19,26 +19,34 @@ class MealPlan extends Connect{
 		return $this->mealplans;
 	}
 	function addMealPlan($mealplan_data){
-		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" ){
-			$file_type=pathinfo($mealplan_data["image"],PATHINFO_EXTENSION);
-			if(in_array($file_type,$this->allowTypes)){
-				//query to insert data
-				$sql = "INSERT INTO meal_plans (name, description, image,meal_id) VALUES ('".$mealplan_data["name"]."','".$mealplan_data["description"]."','".$mealplan_data["image"]."','".$mealplan_data["mealid"]."');";
-				
-				if ($this->conn->query($sql) === TRUE) {
-					$sql = "SELECT * FROM meal_plans WHERE id = ".$this->conn->insert_id;
-					$result = $this->conn->query($sql); 
-					$row = $result->fetch_assoc();
-					array_push($this->mealplan['data'],$row);
-					$this->mealplan['success'] = "Meal Plan added sucessfully";
-
-				} else {
-					$this->mealplan['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
-				}
+		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] !=""){
+			$pattern = "/^\d*(\.\d{0,2})?$/";
+			if (preg_match($pattern,  $mealplan_data["cost"]) == '0') {
+				$this->mealplan['error'] = "Please Enter Cost in valid format. For example 6.25";
 			}
 			else{
-				$this->mealplan['error'] = "Sorry, only JPG, JPEG & PNG files are allowed to upload.";
+				$cost=number_format($mealplan_data['cost'], 2);
+				$file_type=pathinfo($mealplan_data["image"],PATHINFO_EXTENSION);
+				if(in_array($file_type,$this->allowTypes)){
+					//query to insert data
+					$sql = "INSERT INTO meal_plans (name, description, cost,image,meal_id) 
+							VALUES ('".$mealplan_data["name"]."','".$mealplan_data["description"]."','".$cost."','".$mealplan_data["image"]."','".$mealplan_data["mealid"]."');";
+					if ($this->conn->query($sql) === TRUE) {
+						$sql = "SELECT * FROM meal_plans WHERE id = ".$this->conn->insert_id;
+						$result = $this->conn->query($sql); 
+						$row = $result->fetch_assoc();
+						array_push($this->mealplan['data'],$row);
+						$this->mealplan['success'] = "Meal Plan added sucessfully";
+
+					} else {
+						$this->mealplan['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
+					}
+				}
+				else{
+					$this->mealplan['error'] = "Sorry, only JPG, JPEG & PNG files are allowed to upload.";
+				}
 			}
+			
 		} else {
 			$this->mealplan['error'] = "Please provide required field.";
 		}
@@ -51,6 +59,7 @@ class MealPlan extends Connect{
 		$row = $result->fetch_assoc();
 		$this->mealplan["data"]["name"] = $row["name"];
 		$this->mealplan["data"]["description"] = $row["description"];
+		$this->mealplan["data"]["cost"] = $row["cost"];
 		$this->mealplan["data"]["image"] = $row["image"];
 		$this->mealplan["data"]["id"] = $row["id"];
 		$this->mealplan["data"]["mealid"] = $row["meal_id"];
@@ -58,29 +67,37 @@ class MealPlan extends Connect{
 		return $this->mealplan;
 	}
 	function updateMealPlan($mealplan_data){
-		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" ){
-			$file_type=pathinfo($mealplan_data["image"],PATHINFO_EXTENSION);
-			if(in_array($file_type,$this->allowTypes)){
-				//query to update data
-				$sql = "UPDATE meal_plans  SET name='".$mealplan_data["name"]."',
-				description='".$mealplan_data["description"]."',image='".$mealplan_data["image"]."'
-				where id='".$mealplan_data["id"]."'";
-		
-				if ($this->conn->query($sql) === TRUE) {
-					$sql = "SELECT * FROM meal_plans WHERE id = ".$mealplan_data["id"];
-					$result = $this->conn->query($sql); 
-					$row = $result->fetch_assoc();
-					array_push($this->mealplan['data'],$row);
-					$this->mealplan['success'] = "Meal Plan updated sucessfully";
-
-				} else {
-					$this->mealplan['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
-				}
+		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] ){
+			$pattern = "/^\d*(\.\d{0,2})?$/";
+			if (preg_match($pattern,  $mealplan_data["cost"]) == '0') {
+				$this->mealplan['error'] = "Please Enter Cost in valid format. For example 6.25";
 			}
 			else{
-				$this->mealplan['error'] = "Sorry, only JPG, JPEG & PNG files are allowed to upload.";
-			}
+				$cost=number_format($mealplan_data['cost'], 2);
+				$file_type=pathinfo($mealplan_data["image"],PATHINFO_EXTENSION);
+				if(in_array($file_type,$this->allowTypes)){
+					//query to update data
+					$sql = "UPDATE meal_plans  SET name='".$mealplan_data["name"]."',
+					description='".$mealplan_data["description"]."',
+					cost='".$cost."',
+					image='".$mealplan_data["image"]."'
+					where id='".$mealplan_data["id"]."'";
 			
+					if ($this->conn->query($sql) === TRUE) {
+						$sql = "SELECT * FROM meal_plans WHERE id = ".$mealplan_data["id"];
+						$result = $this->conn->query($sql); 
+						$row = $result->fetch_assoc();
+						array_push($this->mealplan['data'],$row);
+						$this->mealplan['success'] = "Meal Plan updated sucessfully";
+
+					} else {
+						$this->mealplan['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
+					}
+				}
+				else{
+					$this->mealplan['error'] = "Sorry, only JPG, JPEG & PNG files are allowed to upload.";
+				}
+			}
 		} else {
 			$this->mealplan['error'] = "Please provide required field.";
 		}

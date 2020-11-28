@@ -41,6 +41,10 @@
                                     <textarea class="form-control" name="description" placeholder="Enter Description" rows="3"></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label>Cost in $</label>
+                                    <input class="form-control" type="number" name="cost" min="0" value="0" step=".01">
+                                </div>
+                                <div class="form-group">
                                     <label>File input</label>
                                     <input name="image" type="file" accept="image/jpeg">
                                 </div>
