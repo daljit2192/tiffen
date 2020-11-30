@@ -8,14 +8,15 @@
                 </div>
                 <div class="col-12 my-5" >
                     <div class="card-deck px-5">
-                        <div class="card">
-                           	<a href="meal_plans.php">
-                            	<img src="./images/image.png" class="card-img-top" alt="Image">
+                        <div class="card h-200">
+                           	<a href="meal_plans.php?meal_id=<?php echo $mealplan["data"]["mealid"];?>">
+                            	<img style="max-height:400px" src="<?php echo "./admin/uploads/mealplan/".$mealplan["data"]["image"]; ?>"class="card-img-top" alt="Image">
                             </a>
-                            <h6 style="align-content: center;">Food Item details</h6>
+                            <h5 style="text-align: center;text-transform: uppercase;" class="card-title"><?php echo $mealplan["data"]["name"]; ?></h5>
+                            <p style="text-align: center;" class="card-text">$<?php echo $mealplan["data"]["cost"]; ?></p>
                         </div>
                         <div class="card">
-                            <h3 style="align-content: center;">List of meal items</h3>
+                            <h3 style="text-align: center;"><?php echo $mealplan["data"]["description"]; ?></h3>
                         </div>
                     </div>
                 </div>

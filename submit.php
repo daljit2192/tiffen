@@ -20,4 +20,8 @@
 		$meal=$mealObj->getMealById($mealid);
 		$mealplans=$mealplanObj->getMealPlanbyMealId($mealid);
 	}
+	if(isset($_GET['plan_id']) && !empty(trim($_GET["plan_id"]))){
+		$planid =  trim($_GET["plan_id"]);
+		$mealplan=$mealplanObj->getMealPlanById($planid);
+	}
 ?>

@@ -47,7 +47,7 @@
                         <div class="card">
                            	<a href="meal_plans.php?meal_id=<?php echo $meal["id"];?>">
                             	<img src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top" alt="Image">
-                                <div class="overlay"><?php echo $meal["meal_name"]; ?></div>
+                                <div style="text-transform: uppercase;" class="overlay"><?php echo $meal["meal_name"]; ?></div>
                             </a>
                         </div>
                     <?php } ?>
