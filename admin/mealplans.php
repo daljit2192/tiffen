@@ -22,6 +22,7 @@
                                                     <th>Plan Name</th>
                                                     <th>Description</th>
                                                     <th>Cost</th>
+                                                    <th>Day</th>
                                                     <th>Image</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -34,6 +35,7 @@
                                                     <td><?php echo $meal["name"]; ?></td>
                                                     <td><?php echo $meal["description"]; ?></td>
                                                     <td>$<?php echo $meal["cost"]; ?></td>
+                                                    <td><?php echo $meal["day"]; ?></td>
                                                     <td><img src="<?php echo 'uploads/mealplan/'.$meal['image']; ?>" alt="Image" height="80px" width="80px" /></td>
                                                     <td>
                                                         <?php echo"<a href='viewmealplan.php?mealid=". $meal['meal_id'] ."&id=".$meal["id"]."'>

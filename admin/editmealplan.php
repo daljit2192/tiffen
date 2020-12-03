@@ -45,6 +45,10 @@
                                     <input class="form-control" type="number" name="cost" min="0" value="<?php echo $mealplan["data"]["cost"] ?>" step=".01">
                                 </div>
                                 <div class="form-group">
+                                    <label>Day</label>
+                                    <input class="form-control" type="number" name="day" min="1" value="<?php echo $mealplan["data"]["day"] ?>">
+                                </div>
+                                <div class="form-group">
                                     <label>File input</label>
                                     <p>
                                     <?php if(!empty($mealplan['data']['image'])){ ?>

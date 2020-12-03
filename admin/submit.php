@@ -68,7 +68,7 @@
 		$filename=$_FILES['image']['name'];
 		$mealid =  trim($_GET["mealid"]);
 		$TargetPath=time().$filename;
-		$mealplanData = array('name'=>$_POST["name"],'description'=>$_POST["description"],'cost'=>$_POST["cost"],'image'=>$TargetPath,'mealid'=>$mealid);
+		$mealplanData = array('name'=>$_POST["name"],'description'=>$_POST["description"],'cost'=>$_POST["cost"],'day'=>$_POST["day"],'image'=>$TargetPath,'mealid'=>$mealid);
 		$mealplan = $mealplanObj->addMealPlan($mealplanData);
 		if($mealplan['error']==''){
 			move_uploaded_file($_FILES['image']['tmp_name'],'uploads/mealplan/'.$TargetPath);
@@ -89,7 +89,7 @@
 		else{
 			$TargetPath=time().$filename;
 		}
-		$mealplanData = array('id'=>$id,'name'=>$_POST["name"],'description'=>$_POST["description"],'cost'=>$_POST["cost"],'image'=>$TargetPath);
+		$mealplanData = array('id'=>$id,'name'=>$_POST["name"],'description'=>$_POST["description"],'cost'=>$_POST["cost"],'day'=>$_POST["day"],'image'=>$TargetPath);
 		$mealplan = $mealplanObj->updateMealPlan($mealplanData);
 		if(!empty($filename) && $mealplan['error']==''){
 			move_uploaded_file($_FILES['image']['tmp_name'],'uploads/mealplan/'.$TargetPath);

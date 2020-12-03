@@ -19,7 +19,7 @@ class MealPlan extends Connect{
 		return $this->mealplans;
 	}
 	function addMealPlan($mealplan_data){
-		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] !=""){
+		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] !="" && $mealplan_data["day"]!=""){
 			$pattern = "/^\d*(\.\d{0,2})?$/";
 			if (preg_match($pattern,  $mealplan_data["cost"]) == '0') {
 				$this->mealplan['error'] = "Please Enter Cost in valid format. For example 6.25";
@@ -29,8 +29,9 @@ class MealPlan extends Connect{
 				$file_type=pathinfo($mealplan_data["image"],PATHINFO_EXTENSION);
 				if(in_array($file_type,$this->allowTypes)){
 					//query to insert data
-					$sql = "INSERT INTO meal_plans (name, description, cost,image,meal_id) 
-							VALUES ('".$mealplan_data["name"]."','".$mealplan_data["description"]."','".$cost."','".$mealplan_data["image"]."','".$mealplan_data["mealid"]."');";
+					$sql = "INSERT INTO meal_plans (name, description, cost,day,image,meal_id) 
+							VALUES ('".$mealplan_data["name"]."','".$mealplan_data["description"]."',
+							'".$cost."','".$mealplan_data["day"]."','".$mealplan_data["image"]."','".$mealplan_data["mealid"]."');";
 					if ($this->conn->query($sql) === TRUE) {
 						$sql = "SELECT * FROM meal_plans WHERE id = ".$this->conn->insert_id;
 						$result = $this->conn->query($sql); 
@@ -60,6 +61,7 @@ class MealPlan extends Connect{
 		$this->mealplan["data"]["name"] = $row["name"];
 		$this->mealplan["data"]["description"] = $row["description"];
 		$this->mealplan["data"]["cost"] = $row["cost"];
+		$this->mealplan["data"]["day"] = $row["day"];
 		$this->mealplan["data"]["image"] = $row["image"];
 		$this->mealplan["data"]["id"] = $row["id"];
 		$this->mealplan["data"]["mealid"] = $row["meal_id"];
@@ -67,7 +69,7 @@ class MealPlan extends Connect{
 		return $this->mealplan;
 	}
 	function updateMealPlan($mealplan_data){
-		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] ){
+		if($mealplan_data["name"]!== "" && $mealplan_data["description"]!== "" && $mealplan_data["image"]!== "" && $mealplan_data["cost"] && $mealplan_data["day"]!=""){
 			$pattern = "/^\d*(\.\d{0,2})?$/";
 			if (preg_match($pattern,  $mealplan_data["cost"]) == '0') {
 				$this->mealplan['error'] = "Please Enter Cost in valid format. For example 6.25";
@@ -79,6 +81,7 @@ class MealPlan extends Connect{
 					//query to update data
 					$sql = "UPDATE meal_plans  SET name='".$mealplan_data["name"]."',
 					description='".$mealplan_data["description"]."',
+					day='".$mealplan_data["day"]."',
 					cost='".$cost."',
 					image='".$mealplan_data["image"]."'
 					where id='".$mealplan_data["id"]."'";

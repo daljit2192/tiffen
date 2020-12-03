@@ -45,6 +45,10 @@
                                     <input class="form-control" type="number" name="cost" min="0" value="0" step=".01">
                                 </div>
                                 <div class="form-group">
+                                    <label>Day</label>
+                                    <input class="form-control" type="number" name="day" min="1" value="0">
+                                </div>
+                                <div class="form-group">
                                     <label>File input</label>
                                     <input name="image" type="file" accept="image/jpeg">
                                 </div>
