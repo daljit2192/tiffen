@@ -14,7 +14,10 @@
                             	<img src="<?php echo "./admin/uploads/mealplan/".$mealplan["image"]; ?>" class="card-img-top" alt="Image">
                             </a>
                             <h6 style="text-align: center;text-transform: uppercase;"><?php echo $mealplan["name"]; ?></h6>
-                            <p style="text-align: center;">$<?php echo $mealplan["cost"]; ?></p>
+                            <p style="text-align: center;">$<?php echo $mealplan["cost"]; ?> / <?php echo $mealplan["day"]; ?> day<?php
+                                    if($mealplan["day"]>1){
+                                        ?>s<?php } ?>
+                            </p>
                         </div>
                     <?php } ?>
                     </div>
