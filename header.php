@@ -38,22 +38,38 @@
                             <h3 class="modal-title">Login here!!</h3>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" action="/action_page.php">
+                        <?php 
+                                if(!empty($user)) {
+                                    if($user["error"] !== ""){
+                            ?>
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <?php echo $user["error"]; ?>
+                            </div>
+                            <?php } elseif ($user["success"]!=="") { ?>
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <?php 
+                                    echo $user["success"];
+                                ?>
+                            </div>
+                            <?php }} ?>
+                            <form class="form-horizontal">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="email">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="pwd">Password:</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-success">Login</button>
+                                        <button type="submit" name="login" class="btn btn-success">Login</button>
                                     </div>
                                 </div>
                             </form>
@@ -160,7 +176,19 @@
                         <a class="nav-link" href="contactus.html">Contact us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">Login</a>
+                        <?php if(!isset($_SESSION["user"])){?>
+                            <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">Login</a>
+                        <?php } else { ?>
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        <?php } ?>
+                        
+                    </li>   
+                    <li class="nav-item">
+                        <?php if(isset($_SESSION["user"])){?>
+                            <span class="nav-link" >Welcome <?php echo $_SESSION["user"]["first_name"]?>!</span>
+                        <?php }  ?>
+                            
+                        
                     </li>     
                 </ul>
             </div>  
