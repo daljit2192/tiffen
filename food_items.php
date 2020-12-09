@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <?php include 'header.php'; ?>
         <!-- Slider -->
         
@@ -20,6 +22,18 @@
                         </div>
                         <div class="card">
                             <h3 style="text-align: center;"><?php echo $mealplan["data"]["description"]; ?></h3>
+                            <br/>
+                            <div class="text-center">
+                            <?php if(isset($_SESSION['user'])) { ?>
+                                <a href="checkout.php?plan_id=<?php echo $mealplan["data"]["id"];?>">
+                                    <button type="button" class="btn btn-dark">Purchase</button>
+                                </a>
+                            <?php } else { ?>
+                                <a data-toggle="modal" data-target="#loginModal">
+                                    <button type="button" class="btn btn-dark">Purchase</button>
+                                </a>
+                            <?php } ?>
+                           </div>
                         </div>
                     </div>
                 </div>
