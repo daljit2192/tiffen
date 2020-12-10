@@ -119,6 +119,7 @@ if(!isset($_SESSION['user'])){
         </div>
         <input type="hidden" name="amount" value="<?php echo $mealplan["data"]["cost"] ?>">
         <input type="hidden" name="meal_plan_id" value="<?php echo $mealplan["data"]["id"] ?>">
+        <input type="hidden" name="meal_plan_day" value="<?php echo $mealplan["data"]["day"] ?>">
         <!-- <hr class="mb-4">
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="same-address">
