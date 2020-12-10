@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2020 at 03:52 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Dec 10, 2020 at 04:34 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -40,9 +39,9 @@ CREATE TABLE `meals` (
 --
 
 INSERT INTO `meals` (`id`, `meal_name`, `description`, `image`) VALUES
-(1, 'Gujrati Food', 'Gujrati food description', 'paneer.jpg'),
-(2, 'Punjabi Food', 'Punjabi food description', 'sm3.jpg'),
-(3, 'South Indian', 'South Indian food description', 'sm3.jpg');
+(1, 'Gujrati Food', 'Gujrati food description', '1607557465guj.jpg'),
+(2, 'Punjabi Food', 'Punjabi food description', '1607557318pun.jpg'),
+(3, 'South Indian', 'South Indian food description', '1607557592souu.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,20 +64,45 @@ CREATE TABLE `meal_plans` (
 --
 
 INSERT INTO `meal_plans` (`id`, `name`, `description`, `cost`, `day`, `image`, `meal_id`) VALUES
-(11, 'gujrati plan 1', 'Gujarati thali consists 2 rotli,1 Gujraati dal or kadhi, rice, and shaak/sabzi with different combinations of vegetables and spices.', '6.25', 1, 'paneer.jpg', 1),
-(13, 'gujrati plan 2', 'Gujarati thali consists 4 rotli,2 Gujraati dal or kadhi, rice, and shaak/sabzi with different combinations of vegetables and spices.', '55.00', 5, 'paneer.jpg', 1),
-(14, 'punjabi meal plan 1', 'Amritsari aloo kulcha , dahi kadhi , Punjabi chole, jeera rice , 1 dal tadka and sweet lassi', '8.50', 0, 'paneer.jpg', 2),
-(15, 'punjabi meal plan 2', 'Punjabi Kadhi, Chawal, Achar, Raita and Chopped Salad ', '25.25', 0, 'paneer.jpg', 2),
-(16, 'South Indian meal 2', 'Brinjal Sambhar,Karuvepilai podi,vendakki curry,Curd rice', '8.50', 0, 'paneer.jpg', 3),
-(17, 'gujrati plan 3', 'Gujarati thali consists 2 rotli,1 Gujraati dal or kadhi, rice, and shaak/sabzi with different combinations of vegetables and spices.', '23.00', 0, 'paneer.jpg', 1),
-(18, 'gujrati plan 4', 'gujrati plan 4', '25.25', 2, 'paneer.jpg', 1),
-(19, 'gujrati plan 5', 'gujrati plan 5', '55.00', 0, 'paneer.jpg', 1),
-(20, 'punjabi meal plan 3', 'punjabi meal plan 3', '8.50', 0, 'paneer.jpg', 2),
-(21, 'punjabi meal plan 4', 'punjabi meal plan 4', '55.00', 0, 'paneer.jpg', 2),
-(22, 'South Indian meal 1', 'Idli with Podi', '25.25', 0, 'paneer.jpg', 3),
-(23, 'South Indian meal 3', 'Brinjal Sambhar,Karuvepilai podi,vendakki curry,Curd rice', '8.50', 0, 'paneer.jpg', 3),
-(24, 'South Indian meal 4', 'Radish Sambhar,Karuvepilai podi,vendakki curry,Curd rice', '55.00', 0, 'paneer.jpg', 3),
-(25, 'gujrati plan 7', 'gujrati plan 7', '65.00', 5, 'paneer.jpg', 1);
+(11, 'Deluxe food plan', 'Dhaniya Pudina Chutney,\r\nGajjar Mirch Ka Sambhaar,\r\nSooji Halwa,\r\nAloo Baingan Ki Sabzi , \r\n4 rotis,\r\nMango lassi.\r\n\r\n', '10.00', 1, '1607555609gujarati.jpg', 1),
+(13, 'Platinum food plan', 'Dhaniya Pudina Chutney,\r\nGajjar Mirch Ka Sambhaar,\r\nSooji Halwa,\r\nAloo Baingan Ki Sabzi , \r\n4 rotis,\r\nMango lassi.', '40.00', 5, '1607555696gujarati.jpg', 1),
+(14, 'Deluxe food plan', 'Dal Makni \r\nDahi kadhi ,\r\nPunjabi chole,\r\n jeera rice , \r\nShahi Paneer,\r\n4 Rotis \r\nsweet lassi', '10.00', 1, '1607556118punjab1.jpg', 2),
+(15, 'Platinum food plan', 'Dal Makni \r\nDahi kadhi ,\r\nPunjabi chole,\r\n jeera rice , \r\nShahi Paneer,\r\n4 Rotis \r\nsweet lassi', '40.00', 5, '1607556173punjab1.jpg', 2),
+(16, 'Deluxe food plan', 'Sambar / Kulambu,\r\nFried Rice,\r\nPumpkin Koothu,\r\nPotato fry,\r\nCarrot Kosumari,\r\nCurd. ', '10.00', 1, '1607556836south2.jpg', 3),
+(17, 'Diamond food plan', 'Dhaniya Pudina Chutney,\r\nGajjar Mirch Ka Sambhaar,\r\nSooji Halwa,\r\nAloo Baingan Ki Sabzi , \r\n4 rotis,\r\nMango lassi.', '80.00', 10, '1607555734gujarati.jpg', 1),
+(20, 'Diamond food plan', 'Dal Makni \r\nDahi kadhi ,\r\nPunjabi chole,\r\n jeera rice , \r\nShahi Paneer,\r\n4 Rotis \r\nsweet lassi', '80.00', 10, '1607556229punjab1.jpg', 2),
+(22, 'Platinum food plan', 'Sambar / Kulambu,\r\nFried Rice,\r\nPumpkin Koothu,\r\nPotato fry,\r\nCarrot Kosumari,\r\nCurd. ', '40.00', 5, '1607556863south2.jpg', 3),
+(23, 'Diamond food plan', 'Sambar / Kulambu,\r\nFried Rice,\r\nPumpkin Koothu,\r\nPotato fry,\r\nCarrot Kosumari,\r\nCurd. ', '80.00', 10, '1607556888south2.jpg', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `shipping_first_name` varchar(100) NOT NULL,
+  `shipping_last_name` varchar(100) NOT NULL,
+  `shipping_email` varchar(100) NOT NULL,
+  `shipping_phone_no` varchar(100) NOT NULL,
+  `shipping_address` varchar(200) NOT NULL,
+  `shipping_postal_code` varchar(50) NOT NULL,
+  `shipping_amount` decimal(10,2) NOT NULL,
+  `meal_plan_id` int(11) NOT NULL,
+  `payment_method` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `user_id`, `shipping_first_name`, `shipping_last_name`, `shipping_email`, `shipping_phone_no`, `shipping_address`, `shipping_postal_code`, `shipping_amount`, `meal_plan_id`, `payment_method`, `created_at`, `updated_at`) VALUES
+(28, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 11, 'COD', '2020-12-09 07:04:58', '0000-00-00 00:00:00'),
+(29, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 11, 'COD', '2020-12-09 07:05:16', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -96,9 +120,9 @@ CREATE TABLE `users` (
   `phone_number` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `user_type` int(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -120,9 +144,9 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `address`, `posta
 CREATE TABLE `user_types` (
   `id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -147,6 +171,12 @@ ALTER TABLE `meals`
 -- Indexes for table `meal_plans`
 --
 ALTER TABLE `meal_plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -175,7 +205,13 @@ ALTER TABLE `meals`
 -- AUTO_INCREMENT for table `meal_plans`
 --
 ALTER TABLE `meal_plans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
