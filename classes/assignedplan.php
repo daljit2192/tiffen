@@ -5,9 +5,9 @@ class AssignedPlan extends Connect{
     public $assigned_plans = array('data' =>array() , 'error'=> '', 'success'=> '' );
 
     function addAssignedPlan($assigned_plan){
-        $sql = "INSERT INTO assigned_plans (user_id, meal_plan_id,days_left) 
-                VALUES ('".$assigned_plan["user_id"]."',
-                '".$assigned_plan["meal_plan_id"]."','".$assigned_plan["days_left"]."');";
+        $sql = "INSERT INTO assigned_plans (user_id, meal_plan_id,days_left,checkout_details_id) 
+                VALUES ('".$assigned_plan["user_id"]."','".$assigned_plan["meal_plan_id"]."',
+                '".$assigned_plan["days_left"]."','".$assigned_plan["checkout_details_id"]."');";
         if ($this->conn->query($sql) === TRUE) {
             $sql = "SELECT * FROM assigned_plans WHERE id = ".$this->conn->insert_id;
             $result = $this->conn->query($sql); 
@@ -50,3 +50,4 @@ class AssignedPlan extends Connect{
     }
 
 }
+?>

@@ -46,15 +46,14 @@
         <script  src="admin/js/jquery.min.js"></script>
         <script type="text/javascript">
             function order(planid,days_left) {
-                // var planid=$(this).val().split('-')[0];
-                // var days_left=$(this).val().split('-')[1];
                 $.ajax({
                     type: "POST",
                     url: "submit.php",
                     data: { planid: planid,days_left:days_left }
                 })
-                .done(function() {
-                    window.location = "orderplaced.php";
+                .done(function(data) {
+                    var order_id=parseInt(data);
+                    window.location = "orderplaced.php?orderid="+order_id;
                 });
             };
         </script>

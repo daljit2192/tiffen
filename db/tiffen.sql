@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2020 at 10:51 AM
+-- Generation Time: Dec 10, 2020 at 11:50 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -33,6 +33,7 @@ CREATE TABLE `assigned_plans` (
   `user_id` int(11) NOT NULL,
   `meal_plan_id` int(11) NOT NULL,
   `days_left` int(11) NOT NULL,
+  `checkout_details_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,11 +42,45 @@ CREATE TABLE `assigned_plans` (
 -- Dumping data for table `assigned_plans`
 --
 
-INSERT INTO `assigned_plans` (`id`, `user_id`, `meal_plan_id`, `days_left`, `created_at`, `updated_at`) VALUES
-(1, 6, 11, 0, '2020-12-10 09:29:43', '0000-00-00 00:00:00'),
-(2, 6, 11, 0, '2020-12-10 09:36:12', '0000-00-00 00:00:00'),
-(3, 6, 17, 9, '2020-12-10 09:37:32', '0000-00-00 00:00:00'),
-(4, 6, 23, 9, '2020-12-10 09:39:40', '0000-00-00 00:00:00');
+INSERT INTO `assigned_plans` (`id`, `user_id`, `meal_plan_id`, `days_left`, `checkout_details_id`, `created_at`, `updated_at`) VALUES
+(1, 6, 11, 0, 1, '2020-12-10 10:19:32', '0000-00-00 00:00:00'),
+(2, 6, 11, 0, 1, '2020-12-10 10:19:35', '0000-00-00 00:00:00'),
+(3, 6, 17, 7, 1, '2020-12-10 10:47:07', '0000-00-00 00:00:00'),
+(4, 6, 23, 4, 1, '2020-12-10 10:48:23', '0000-00-00 00:00:00'),
+(5, 6, 23, 9, 0, '2020-12-10 10:42:06', '0000-00-00 00:00:00'),
+(6, 6, 23, 9, 32, '2020-12-10 10:42:37', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checkout_details`
+--
+
+CREATE TABLE `checkout_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `shipping_first_name` varchar(100) NOT NULL,
+  `shipping_last_name` varchar(100) NOT NULL,
+  `shipping_email` varchar(100) NOT NULL,
+  `shipping_phone_no` varchar(100) NOT NULL,
+  `shipping_address` varchar(200) NOT NULL,
+  `shipping_postal_code` varchar(50) NOT NULL,
+  `shipping_amount` decimal(10,2) NOT NULL,
+  `payment_method` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `checkout_details`
+--
+
+INSERT INTO `checkout_details` (`id`, `user_id`, `shipping_first_name`, `shipping_last_name`, `shipping_email`, `shipping_phone_no`, `shipping_address`, `shipping_postal_code`, `shipping_amount`, `payment_method`, `created_at`, `updated_at`) VALUES
+(28, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 'COD', '2020-12-09 07:04:58', '0000-00-00 00:00:00'),
+(29, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 'COD', '2020-12-09 07:05:16', '0000-00-00 00:00:00'),
+(30, 6, 'sdfs', 'sdfssdfsd', 'sdfsd@kijj.sdjd', '334', 'djkfk@jkjd.fddf', '2323', '80.00', 'COD', '2020-12-10 10:23:59', '0000-00-00 00:00:00'),
+(31, 6, 'dvdf', 'dfvdfdfgdf', 'jkfdkj@ijkd.ddd', '3727', 'fjherrjk', 'fklrjke', '80.00', 'COD', '2020-12-10 10:25:05', '0000-00-00 00:00:00'),
+(32, 6, 'dvdf', 'dfvdfdfgdf', 'jkfdkj@ijkd.ddd', '3727', 'fjherrjk', 'fklrjke', '80.00', 'COD', '2020-12-10 10:26:03', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -108,27 +143,25 @@ INSERT INTO `meal_plans` (`id`, `name`, `description`, `cost`, `day`, `image`, `
 
 CREATE TABLE `order_details` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `shipping_first_name` varchar(100) NOT NULL,
-  `shipping_last_name` varchar(100) NOT NULL,
-  `shipping_email` varchar(100) NOT NULL,
-  `shipping_phone_no` varchar(100) NOT NULL,
-  `shipping_address` varchar(200) NOT NULL,
-  `shipping_postal_code` varchar(50) NOT NULL,
-  `shipping_amount` decimal(10,2) NOT NULL,
-  `meal_plan_id` int(11) NOT NULL,
-  `payment_method` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `assigned_plan_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`id`, `user_id`, `shipping_first_name`, `shipping_last_name`, `shipping_email`, `shipping_phone_no`, `shipping_address`, `shipping_postal_code`, `shipping_amount`, `meal_plan_id`, `payment_method`, `created_at`, `updated_at`) VALUES
-(28, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 11, 'COD', '2020-12-09 07:04:58', '0000-00-00 00:00:00'),
-(29, 6, 'pooja', 'sharma', 'pooja@gmail.com', '12345', 'test address', '1231232', '6.25', 11, 'COD', '2020-12-09 07:05:16', '0000-00-00 00:00:00');
+INSERT INTO `order_details` (`id`, `assigned_plan_id`, `created_at`, `updated_at`) VALUES
+(1, 3, '2020-12-10 10:40:29', '2020-12-10 10:40:29'),
+(2, 5, '2020-12-10 10:42:06', '2020-12-10 10:42:06'),
+(3, 6, '2020-12-10 10:42:37', '2020-12-10 10:42:37'),
+(4, 4, '2020-12-10 10:43:15', '2020-12-10 10:43:15'),
+(5, 4, '2020-12-10 10:43:55', '2020-12-10 10:43:55'),
+(6, 4, '2020-12-10 10:44:31', '2020-12-10 10:44:31'),
+(7, 3, '2020-12-10 10:47:07', '2020-12-10 10:47:07'),
+(8, 4, '2020-12-10 10:47:23', '2020-12-10 10:47:23'),
+(9, 4, '2020-12-10 10:48:23', '2020-12-10 10:48:23');
 
 -- --------------------------------------------------------
 
@@ -194,6 +227,12 @@ ALTER TABLE `assigned_plans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `checkout_details`
+--
+ALTER TABLE `checkout_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `meals`
 --
 ALTER TABLE `meals`
@@ -231,7 +270,13 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `assigned_plans`
 --
 ALTER TABLE `assigned_plans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `checkout_details`
+--
+ALTER TABLE `checkout_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `meals`
@@ -249,7 +294,7 @@ ALTER TABLE `meal_plans`
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
