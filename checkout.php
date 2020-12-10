@@ -143,11 +143,11 @@ if(!isset($_SESSION['user'])){
             <label class="custom-control-label" for="debit">Debit card</label>
           </div> -->
           <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" value="COD" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="paypal">COD</label>
+            <input id="paypal" name="paymentMethod" value="Debit Card" type="radio" class="custom-control-input" checked required>
+            <label class="custom-control-label" for="paypal">Debit Card</label>
           </div>
         </div>
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
             <input type="text" class="form-control" id="cc-name" placeholder="" required>
@@ -179,7 +179,7 @@ if(!isset($_SESSION['user'])){
               Security code required
             </div>
           </div>
-        </div> -->
+        </div>
         <hr class="mb-4">
         <input class="btn btn-dark btn-lg btn-block" name="checkout" type="submit" value="Checkout"/>
         <br/>
