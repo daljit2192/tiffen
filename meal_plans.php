@@ -2,7 +2,7 @@
 <?php include 'header.php'; ?>
         <!-- Slider -->
         
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="row p-5">
                 <div class="col-12 text-center floating">
                     <h2><strong><?php echo $meal["data"]["meal_name"]?> Meal Plans</strong></h2>
