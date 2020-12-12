@@ -7,7 +7,7 @@ if(!isset($_SESSION['user'])){
 <?php include 'header.php' ?>
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Checkout Details</h2>
+    <h2><strong>Checkout Details</strong></h2>
   </div>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">

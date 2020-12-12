@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row p-5">
                 <div class="col-12 text-center">
-                    <h2>Your Meal Plans</h2>
+                    <h2><strong>Your Meal Plans</strong></h2>
                 </div>
                 <div class="col-12 my-5" >
                 <table class="table table-hover">

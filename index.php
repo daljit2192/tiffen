@@ -40,14 +40,14 @@
         <div class="container-fluid">
             <div class="row p-5">
                 <div class="col-12 text-center">
-                    <h2>Meals</h2>
+                    <h2><strong>Meals</strong></h2>
                 </div>
                 <div class="col-12 my-5" >
                     <div class="card-deck px-5">
                     <?php foreach($meals["data"] as $meal) {?>
                         <div class="card">
                            	<a href="meal_plans.php?meal_id=<?php echo $meal["id"];?>">
-                            	<img  src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top meals" alt="Image">
+                            	<img height="250px" width="250px" src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top meals" alt="Image">
                                 <div style="text-transform: uppercase;" class="overlay"><?php echo $meal["meal_name"]; ?></div>
                             </a>
                         </div>

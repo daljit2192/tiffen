@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])){
     Having trouble? <a href="contactus.html">Contact us</a>
   </p> -->
   <p class="lead">
-    <a class="btn btn-dark btn-sm" href="index.php" role="button">Continue to homepage</a>
+    <a class="btn btn-dark btn-sm" href="index.php" role="button">Back to home <i class="fa fa-home" aria-hidden="true"></i></a>
   </p>
 </div>
 <?php include 'footer.php'; ?>
