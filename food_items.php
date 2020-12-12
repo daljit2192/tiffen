@@ -21,12 +21,11 @@
                                             ?>s<?php } ?>
                                 </p>
                             </div>
-                            
                         </div>
                         <div class="card align-items-center d-flex justify-content-center items-card">
                             <h3 class="floating text-center"><strong>Description<h3><strong>
                             <div class="card-body">
-                            <h3 class="floating p-card"><?php echo $mealplan["data"]["description"]; ?></h3>
+                            <h3 class="floating p-card"><strong><?php echo $mealplan["data"]["description"]; ?><strong></h3>
                             
                             <br/>
                             <div class="text-center">

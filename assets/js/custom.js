@@ -9,13 +9,20 @@ $(document).ready(function(){
 //for fadin effect on meals
 $(window).scroll(function (event) {
 	var scroll = $(window).scrollTop();
+	console.log(scroll);
 	if(scroll>10){
 		$('.meals').fadeIn(2000);
 	}
 	else{
 		$('.meals').css("display","none");
 	}
-
+	if(scroll>407){
+		$('.contact').fadeIn(2000);
+		$('.contact').css('font-weight','700');
+	}
+	else{
+		$('.contact').css("display","none");
+	}
 });
 function order(planid,days_left) {
 	$.ajax({

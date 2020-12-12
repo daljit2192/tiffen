@@ -48,7 +48,7 @@
                         <div class="card">
                            	<a href="meal_plans.php?meal_id=<?php echo $meal["id"];?>">
                             	<img height="250px" width="250px" src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top meals" alt="Image">
-                                <div style="text-transform: uppercase;" class="overlay"><?php echo $meal["meal_name"]; ?></div>
+                                <div style="text-transform: uppercase;" class="overlay meals"><?php echo $meal["meal_name"]; ?></div>
                             </a>
                         </div>
                     <?php } ?>
@@ -56,22 +56,22 @@
                 </div>
             </div>
             <div class="row p-5">
-                <div class="col-md-3 text-center contact-border">
+                <div class="col-md-3 text-center contact-border contact">
                     <i class="fa fa-map-marker"  aria-hidden="true"></i>
                     <h5>Our Office Address</h5>
                     <p>Malad West,Mumbai</p>
                 </div>
-                <div class="col-md-3 text-center contact-border"  >
+                <div class="col-md-3 text-center contact-border contact"  >
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                     <h5>General Enquiries</h5>
                     <p>demo@gmail.com</p>
                 </div>
-                <div class="col-md-3 text-center contact-border" >
+                <div class="col-md-3 text-center contact-border contact" >
                     <i class="fa fa-phone" aria-hidden="true"></i>
                     <h5>Call Us</h5>
                     <p>+91-0000000000</p>
                 </div>
-                <div class="col-md-3 text-center">
+                <div class="col-md-3 text-center contact">
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                     <h5>Our Timings</h5>
                     <p>Mon - Sun : 09:00 AM - 05:00 PM</p>

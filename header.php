@@ -191,7 +191,7 @@
                     </li>   
                     <li class="nav-item">
                         <?php if(isset($_SESSION["user"])){?>
-                            <span class="nav-link" >Welcome <?php echo $_SESSION["user"]["first_name"]?>!</span>
+                            <span class="nav-link" style="color:white" >Welcome <?php echo $_SESSION["user"]["first_name"]?>!</span>
                         <?php }  ?>
                             
                         
