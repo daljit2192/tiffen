@@ -1,4 +1,8 @@
 
+  body{
+    font-family: 'Langar', cursive;
+  }
+  
   .img1 {
     height: 85%;
     width: 80%;
@@ -22,7 +26,10 @@
   }
   .contact-border{
     border-right: 1px solid black;  
-    }
+  }
+  .meals{
+      display:none
+  }
 
 
 

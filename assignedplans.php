@@ -43,18 +43,4 @@
                 </div>
             </div>
         </div>
-        <script  src="admin/js/jquery.min.js"></script>
-        <script type="text/javascript">
-            function order(planid,days_left) {
-                $.ajax({
-                    type: "POST",
-                    url: "submit.php",
-                    data: { planid: planid,days_left:days_left }
-                })
-                .done(function(data) {
-                    var order_id=parseInt(data);
-                    window.location = "orderplaced.php?orderid="+order_id;
-                });
-            };
-        </script>
 <?php include 'footer.php'; ?>

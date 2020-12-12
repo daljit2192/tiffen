@@ -47,7 +47,7 @@
                     <?php foreach($meals["data"] as $meal) {?>
                         <div class="card">
                            	<a href="meal_plans.php?meal_id=<?php echo $meal["id"];?>">
-                            	<img src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top" alt="Image">
+                            	<img  src="<?php echo "./admin/uploads/".$meal["image"]; ?>" class="card-img-top meals" alt="Image">
                                 <div style="text-transform: uppercase;" class="overlay"><?php echo $meal["meal_name"]; ?></div>
                             </a>
                         </div>
@@ -78,4 +78,5 @@
                 </div>
             </div>
         </div>
+
 <?php include 'footer.php'; ?>
