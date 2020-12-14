@@ -21,9 +21,9 @@ class AssignedPlan extends Connect{
         return $this->assigned_plan;
     }
     function getAssignedPlanByUserid($userid){
-        $sql = "SELECT a.*,m.cost,m.day,m.name 
+        $sql = "SELECT a.*,m.cost,m.day,m.name,me.meal_name 
                 FROM assigned_plans as a inner join meal_plans as m on m.id = a.meal_plan_id
-                where a.user_id=".$userid;
+                inner join meals as me on m.meal_id= me.id where a.user_id=".$userid;
         $result = $this->conn->query($sql); 
         
 		if ($result->num_rows > 0) {

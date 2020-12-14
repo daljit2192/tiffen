@@ -12,6 +12,7 @@
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Meal Name</th>
                         <th scope="col">Meal Plan Name</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Days(Plan Left)</th>
@@ -23,6 +24,7 @@
                     <?php foreach($assignedplans["data"] as $key=>$assignedplan) {?>
                         <tr>
                             <th scope="row"><?php echo $key+1 ?></th>
+                            <td><?php echo $assignedplan["meal_name"] ?></td>
                             <td><?php echo $assignedplan["name"] ?></td>
                             <td><?php echo $assignedplan["cost"] ?>/ <?php echo $assignedplan["day"]; ?> day<?php
                                     if($assignedplan["day"]>1){
