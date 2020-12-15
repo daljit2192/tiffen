@@ -35,16 +35,15 @@ class AssignedPlan extends Connect{
         }
 		return $this->assigned_plans;
     }
-    function updateAssignedPlan($details){
-        $dayleft= $details["days_left"]-1;
-        $sql = "UPDATE assigned_plans  SET days_left=$dayleft
-					where id='".$details["planid"]."'";	
-        if ($this->conn->query($sql) === TRUE) {
-            $this->assigned_plan['success'] = "Assigned Plan updated sucessfully";
-
-        } else {
-            $this->assigned_plan['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
-        }
+    function updateAssignedPlan($plan_array){
+        
+        for($i=0;$i<count($plan_array);$i++) {
+            $days_left=$plan_array[$i]['days_left'];
+            $planid=(int)$plan_array[$i]['planid'];
+            $sql = "UPDATE assigned_plans  SET days_left= $days_left
+                    where id=$planid";	
+            $result = $this->conn->query($sql); 
+          }
         return $this->assigned_plan;
 
     }

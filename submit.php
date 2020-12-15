@@ -67,17 +67,9 @@
 		$userid=$_GET['userid'];
 		$assignedplans=$assignedplanObj->getAssignedPlanByUserid($userid);
 	}
-	// if(isset($_GET['orderid']) && !empty(trim($_GET["orderid"]))){
-	// 	$orderid=$_GET['orderid'];
-	// }
-	if (isset($_POST['planid']) && !empty(trim($_POST["planid"]))) { 
-		$assigned_plan_details=array(
-			'planid'=>$_POST['planid'],
-			'days_left'=>$_POST['days_left']
-		);
-		$assignedplan=$assignedplanObj->updateAssignedPlan($assigned_plan_details);
-		$order=$orderdetailObj->generateOrder($_POST['planid']);
-		echo json_encode((int)$order["data"][0]['id']);
-		
-	} 
+	if (isset($_POST['planid_array'])) { 
+		$assignedplans=$assignedplanObj->updateAssignedPlan($_POST['planid_array']);
+		$order=$orderdetailObj->generateOrder($_POST['planid_array']);
+		echo json_encode($assignedplans);
+	}
 ?>

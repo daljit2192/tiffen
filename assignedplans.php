@@ -15,33 +15,33 @@
                         <th scope="col">Meal Name</th>
                         <th scope="col">Meal Plan Name</th>
                         <th scope="col">Cost</th>
+                        <th scope="col">Order</th>
                         <th scope="col">Days(Plan Left)</th>
-                        <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
-                    <?php foreach($assignedplans["data"] as $key=>$assignedplan) {?>
-                        <tr>
-                            <th scope="row"><?php echo $key+1 ?></th>
-                            <td><?php echo $assignedplan["meal_name"] ?></td>
-                            <td><?php echo $assignedplan["name"] ?></td>
-                            <td><?php echo $assignedplan["cost"] ?>/ <?php echo $assignedplan["day"]; ?> day<?php
-                                    if($assignedplan["day"]>1){
-                                        ?>s<?php } ?></td>
-                            <td><?php echo $assignedplan["days_left"] ?></td>
-                            <td>
-                                <?php if($assignedplan["days_left"]>0) {?>
-                                <button class="btn btn-dark" onclick='order(<?php echo $assignedplan["id"] ?>,<?php echo $assignedplan["days_left"] ?>)' id="order_now"  type="submit">Order Now</button>
-                                <?php } else{ ?>
-                                    <span class="badge badge-success">Order Completed</span>
-                                <?php } ?>
-                            </td>
-                        </tr>
-                    <?php } ?>
+                        <?php foreach($assignedplans["data"] as $key=>$assignedplan) {?>
+                            <tr>
+                                <th scope="row"><?php echo $key+1 ?></th>
+                                <td><?php echo $assignedplan["meal_name"] ?></td>
+                                <td><?php echo $assignedplan["name"] ?></td>
+                                <td><?php echo $assignedplan["cost"] ?>/ <?php echo $assignedplan["day"]; ?> day<?php
+                                        if($assignedplan["day"]>1){
+                                            ?>s<?php } ?></td>
+                                <td>
+                                    <div class="number">
+                                        <input type="hidden" value="<?php echo $assignedplan["days_left"]; ?>" id="left_<?php echo $assignedplan["id"]; ?>">
+                                        <span class="minus" onclick="sub(<?php echo $assignedplan['id']; ?>)">-</span>
+                                        <input type="text" class="input_number" id="num_<?php echo $assignedplan["id"]; ?>" value="0" min="0" max="<?php echo $assignedplan["days_left"] ?>"/>
+                                        <span class="plus" onclick="add(<?php echo $assignedplan['id']; ?>)">+</span>
+                                    </div>
+                                </td>
+                                <td><?php echo $assignedplan["days_left"] ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
-                    </table>
-                   
+                </table>
+                <button class="btn btn-dark pull-right" onclick='order_all(<?php echo json_encode($assignedplans["data"]) ?>)'  type="submit">Order Now</button>
                 </div>
             </div>
         </div>
