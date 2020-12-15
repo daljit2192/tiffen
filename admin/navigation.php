@@ -31,6 +31,9 @@
                             <li>
                                 <a href="meals.php"><i class="fa fa-table fa-fw"></i> Meals</a>
                             </li>
+                            <li>
+                                <a href="orders.php"><i class="fa fa-table fa-fw"></i> Orders</a>
+                            </li>
                             
                             
                         </ul>

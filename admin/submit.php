@@ -2,11 +2,17 @@
 	require_once('../classes/user.php'); 
 	require_once('../classes/meal.php');
 	require_once('../classes/mealplan.php');
+	require_once('../classes/orderdetail.php');
+	require_once('../classes/status.php');
 	$userObj = new User;
 	$mealObj=new Meal;
 	$mealplanObj=new MealPlan;
+	$orderdetailObj=new OrderDetail;
+	$statusObj=new Status;
 	$users = $userObj->getUsers();
 	$meals = $mealObj->getMeals();
+	$status=$statusObj->getAllStatus();
+	$orderdetails = $orderdetailObj->getOrderDetails();
 	$mealplans=array();
 	$mealplan=array();
 	$user = array();
@@ -101,6 +107,10 @@
 		$mealid=$_GET['mealid'];
 		$mealplan=$mealplanObj->deleteMealPlan($id);
 		header("Location: mealplans.php?mealid=".$mealid);
+	}
+	if (isset($_POST['order_status'])) { 
+		$order=$orderdetailObj->updatedOrder($_POST['order_status']);
+		echo json_encode($order);
 	}
 	
 	

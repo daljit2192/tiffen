@@ -17,6 +17,7 @@
         <link href="./css/startmin.css" rel="stylesheet">
 
         <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="./js/custom.js"></script>
         <style type="text/css">
             
         </style>
